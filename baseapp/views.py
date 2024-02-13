@@ -1,8 +1,11 @@
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
-from .models import Feedback
-from .serializers import FeedbackSerializer
+from .models import Feedback,Movie,TVShow
+from .serializers import FeedbackSerializer,MovieSerializer,TVShowSerializer
 from django.db import models
 from authentication.models import AppUser
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 
 class FeedbackListCreateAPIView(ListCreateAPIView):
     queryset = Feedback.objects.all()
@@ -16,3 +19,16 @@ class FeedbackDetailAPIView(RetrieveAPIView):
 
 
 
+class MovieListCreateView(ListCreateAPIView):
+    queryset = Movie.objects.all()
+    serializer_class = MovieSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    
+class MovieDetailView(RetrieveAPIView):
+    queryset = Movie.objects.all()
+    serializer_class =MovieSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    

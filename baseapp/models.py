@@ -26,26 +26,19 @@ class Feedback(models.Model):
 class Movie(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    description = models.TextField()
-    release_date = models.DateField()
-    genre = models.CharField(max_length=50)
-    # Add more fields as needed
+    description = models.TextField(null=True, blank=True)
+    release_date = models.DateField(null=True, blank=True)
+    genre = models.CharField(max_length=50)    # Add more fields as needed
 
 class TVShow(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    description = models.TextField()
-    release_date = models.DateField()
-    genre = models.CharField(max_length=50)
+    description = models.TextField(null=True, blank=True)
+    release_date = models.DateField( null=True, blank=True)
+    genre = models.CharField(max_length=50)    # Add more fields as needed
     # Add more fields as needed
 
-class Favorite(models.Model):
-    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
-class Watchlist(models.Model):
-    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
 
 class MovieScript(models.Model):
     user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
