@@ -5,6 +5,9 @@ from django.db import models
 from authentication.models import AppUser
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework import  status
+
 
 
 class FeedbackListCreateAPIView(ListCreateAPIView):
@@ -25,10 +28,32 @@ class MovieListCreateView(ListCreateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     
+    def perform_create(self, serializer):
+        
+        id = self.request.data['id']
+        print(serializer.validated_data)
+        return super().perform_create(serializer)
+    
     
 class MovieDetailView(RetrieveAPIView):
     queryset = Movie.objects.all()
     serializer_class =MovieSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    
+    
+    
+class TVShowListCreateView(ListCreateAPIView):
+    queryset = TVShow.objects.all()
+    serializer_class = TVShowSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    
+class TVShowDetailView(RetrieveAPIView):
+    queryset = TVShow.objects.all()
+    serializer_class =TVShowSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     

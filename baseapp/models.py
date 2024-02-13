@@ -24,19 +24,17 @@ class Feedback(models.Model):
 
 
 class Movie(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
     release_date = models.DateField(null=True, blank=True)
-    genre = models.CharField(max_length=50)    # Add more fields as needed
+    genre = models.CharField(max_length=50)
 
 class TVShow(models.Model):
-    id = models.AutoField(primary_key=True)
+    id = models.IntegerField(primary_key=True)
     title = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
-    release_date = models.DateField( null=True, blank=True)
-    genre = models.CharField(max_length=50)    # Add more fields as needed
-    # Add more fields as needed
+    genre = models.CharField(max_length=50)
 
 
 
@@ -46,3 +44,5 @@ class MovieScript(models.Model):
     content = models.TextField()
     creation_date = models.DateTimeField(auto_now_add=True)
     # Add more fields as needed
+    
+
