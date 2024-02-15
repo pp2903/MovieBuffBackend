@@ -3,9 +3,7 @@ from authentication.models import AppUser
 # Create your models here.
 
 
-# models.py
 
-from django.db import models
 
 class Feedback(models.Model):
     name = models.CharField(max_length=100)
@@ -44,5 +42,21 @@ class MovieScript(models.Model):
     content = models.TextField()
     creation_date = models.DateTimeField(auto_now_add=True)
     # Add more fields as needed
-    
+
+
+class Fav(models.Model):
+    TYPE_CHOICES = (
+        ('movie', 'Movie'),
+        ('tvshow', 'TV Show'),
+    )
+    user = models.ForeignKey(AppUser, on_delete=models.CASCADE)
+    favorite_type = models.CharField(max_length=10, choices=TYPE_CHOICES)
+    item_id = models.IntegerField(default=0)
+
+    class Meta:
+        # Ensures each user can only have one favorite entry for each movie or TV show
+        unique_together = ('user', 'favorite_type', 'item_id')
+
+    def __str__(self):
+        return f"{self.user.username}'s Favorites"
 
