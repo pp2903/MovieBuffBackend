@@ -88,18 +88,18 @@ WSGI_APPLICATION = "movbuff.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": BASE_DIR / "db.sqlite3",
-    # }
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'moviebuff',  # Name of your MySQL database
-        'USER': 'root',  # MySQL username
-        'PASSWORD': 'p1i2k3u4',  # MySQL password
-        'HOST': 'localhost',  # Or your MySQL host
-        'PORT': '3306',  # MySQL port
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'moviebuff',  # Name of your MySQL database
+    #     'USER': 'root',  # MySQL username
+    #     'PASSWORD': 'password',  # MySQL password
+    #     'HOST': 'localhost',  # Or your MySQL host
+    #     'PORT': '3306',  # MySQL port
+    # }
 }
 
 
