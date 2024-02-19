@@ -58,5 +58,5 @@ class Fav(models.Model):
         unique_together = ('user', 'favorite_type', 'item_id')
 
     def __str__(self):
-        return f"{self.user.username}'s Favorites"
+        return f"{self.favorite_type}: {self.item_id} "
 

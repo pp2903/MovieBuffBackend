@@ -13,7 +13,8 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.contenttypes.models import ContentType
 from .models import Fav
-
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 class FeedbackListCreateAPIView(ListCreateAPIView):
     queryset = Feedback.objects.all()
@@ -115,3 +116,30 @@ def remove_favorite(request):
         return Response({'success': f'{content_type.capitalize()} removed from favorites.'})
     except Fav.DoesNotExist:
         return Response({'error': f'{content_type.capitalize()} is not in favorites.'}, status=404)
+    
+
+@api_view(['GET'])
+@login_required
+def user_favorites(request):
+    if request.method == 'GET':
+        # Retrieve favorites for the authenticated user
+        user_favorites = Fav.objects.filter(user=request.user)
+        favorites_data = []
+
+        # Construct data for each favorite item
+        for favorite in user_favorites:
+            favorite_data = {
+                'id': favorite.id,
+                'favorite_type': favorite.favorite_type,
+                'item_id': favorite.item_id,
+            }
+            if favorite.favorite_type == 'movie':
+                movie = get_object_or_404(Movie, id=favorite.item_id)
+                favorite_data['name'] = movie.title
+            elif favorite.favorite_type == 'tvshow':
+                tvshow = get_object_or_404(TVShow, id=favorite.item_id)
+                favorite_data['name'] = tvshow.title
+
+            favorites_data.append(favorite_data)
+
+        return Response(favorites_data,  status=status.HTTP_200_OK)
