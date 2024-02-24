@@ -11,6 +11,8 @@ class AppUser(AbstractUser):
     started_premium_subscription = models.DateField(blank=True, null=True)
     dob = models.DateField(null=True)
     country = CountryField(default='IN')
+    notifications_enabled = models.BooleanField(default=False)
+
 
     @property
     def age(self):

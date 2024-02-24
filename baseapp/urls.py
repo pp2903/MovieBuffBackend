@@ -16,4 +16,9 @@ urlpatterns = [
     path("add_to_favorites/", views.add_to_favorites, name="add_to_favorites"),
     path("remove_favorite/", views.remove_favorite, name="remove_favorite"),
     path("favorites/", views.user_favorites, name="user_favorites"),
+    path(
+        "user/notification/",
+        views.update_or_get_notification_preference,
+        name="update_or_get_notification_preference",
+    ),
 ]

@@ -143,3 +143,21 @@ def user_favorites(request):
             favorites_data.append(favorite_data)
 
         return Response(favorites_data,  status=status.HTTP_200_OK)
+
+
+#view for updating user notification preference
+
+@api_view(['GET', 'PUT'])
+@permission_classes([IsAuthenticated])
+def update_or_get_notification_preference(request):
+    user = request.user
+    if request.method == 'GET':
+        return Response({'notifications_enabled': user.notifications_enabled})
+    elif request.method == 'PUT':
+        try:
+            notifications_enabled = request.data.get('notifications_enabled', False)
+            user.notifications_enabled = notifications_enabled
+            user.save()
+            return Response({'notifications_enabled': notifications_enabled})
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
