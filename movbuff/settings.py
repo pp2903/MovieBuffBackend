@@ -15,7 +15,6 @@ from dotenv import dotenv_values
 
 
 config  = dotenv_values()
-print(config['SECRET'])
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -171,6 +170,20 @@ DJOSER = {
     'USER_MODEL': 'authentication.AppUser',
     # Add other Djoser settings as needed
 }
+
+
+#EMAIL CONFIG
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Or use 'anymail.backends.smtp.EmailBackend' if using django-anymail
+
+EMAIL_HOST = 'smtp.gmail.com'  # Replace with your server address
+EMAIL_PORT = 587  # Common port for TLS (or 465 for SSL)
+EMAIL_USE_TLS = True  # Use TLS encryption
+
+# For authentication (if needed)
+EMAIL_HOST_USER = 'priyampranshu2903@gmail.com'
+EMAIL_HOST_PASSWORD = 'ptmp lspm bjkf penu'
+
 
 
 #CELERY CONFIGURATION
