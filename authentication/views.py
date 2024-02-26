@@ -21,11 +21,6 @@ class AppUserDetailUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AppUserSerializer
 
 
-
-
-
-
-
 @api_view(['POST'])
 def sign_up(request):
     if request.method == 'POST':

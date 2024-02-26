@@ -97,14 +97,6 @@ DATABASES = {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'moviebuff',  # Name of your MySQL database
-    #     'USER': 'root',  # MySQL username
-    #     'PASSWORD': 'password',  # MySQL password
-    #     'HOST': 'localhost',  # Or your MySQL host
-    #     'PORT': '3306',  # MySQL port
-    # }
 }
 
 
@@ -179,10 +171,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Or use 'anymail
 EMAIL_HOST = 'smtp.gmail.com'  # Replace with your server address
 EMAIL_PORT = 587  # Common port for TLS (or 465 for SSL)
 EMAIL_USE_TLS = True  # Use TLS encryption
-
 # For authentication (if needed)
-EMAIL_HOST_USER = 'priyampranshu2903@gmail.com'
-EMAIL_HOST_PASSWORD = 'ptmp lspm bjkf penu'
+EMAIL_HOST_USER = config['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = config['EMAIL_HOST_PASSWORD']
 
 
 

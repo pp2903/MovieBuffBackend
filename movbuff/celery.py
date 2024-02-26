@@ -21,7 +21,6 @@ app.conf.beat_schedule = {
     
     "send-favorites-in-mail": {
         "task": "baseapp.tasks.generate_and_send_pdf",
-        "schedule": 10,
-        # 'schedule':crontab(hour=20,minute=30,day_of_week=5),
+        'schedule':crontab(hour=20,minute=30,day_of_week=5),
     },
 }

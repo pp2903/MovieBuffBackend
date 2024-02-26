@@ -1,20 +1,63 @@
 <!DOCTYPE html>
-<html>
-  <body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Report</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      margin-bottom: 5px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 4px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
     <h1>Weekly Report for {{ user.username }}</h1>
+    
     <h2>Movies</h2>
     <ul>
       {% for movie in movies %}
-
-      <li>{{movie}}</li>
-
+        <li>{{ movie.title }}</li>
       {% endfor %}
     </ul>
+    
     <h2>TV Shows</h2>
     <ul>
       {% for show in shows %}
-      <li>{{show}}</li>
+        <li>{{ show.title }}</li>
       {% endfor %}
     </ul>
-  </body>
+  </div>
+</body>
 </html>
