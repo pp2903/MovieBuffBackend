@@ -1,9 +1,6 @@
-from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveAPIView
 from .models import Feedback, Movie, TVShow
 from .serializers import FeedbackSerializer, MovieSerializer, TVShowSerializer
-from django.db import models
-from authentication.models import AppUser
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -13,10 +10,6 @@ from rest_framework.decorators import (
     authentication_classes,
     permission_classes,
 )
-from rest_framework.response import Response
-from rest_framework.authentication import TokenAuthentication
-from rest_framework.permissions import IsAuthenticated
-from django.contrib.contenttypes.models import ContentType
 from .models import Fav
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -42,7 +35,6 @@ class MovieListCreateView(ListCreateAPIView):
 
     def perform_create(self, serializer):
 
-        id = self.request.data["id"]
         print(serializer.validated_data)
         return super().perform_create(serializer)
 
@@ -178,4 +170,4 @@ def update_or_get_notification_preference(request):
             user.save()
             return Response({"notifications_enabled": notifications_enabled})
         except Exception as e:
-            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)   
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)

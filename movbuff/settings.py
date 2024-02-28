@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -88,6 +88,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "movbuff.wsgi.application"
 
+# CSRF_COOKIE_SECURE=True
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases

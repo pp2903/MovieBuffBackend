@@ -2,7 +2,6 @@ from django.db import models
 from datetime import date
 from django.contrib.auth.models import AbstractUser
 from django_countries.fields import CountryField
-from django_countries import countries
 
 class AppUser(AbstractUser):
     is_prime_member = models.BooleanField(default=False, verbose_name="Prime member")
@@ -12,6 +11,7 @@ class AppUser(AbstractUser):
     dob = models.DateField(null=True)
     country = CountryField(default='IN')
     notifications_enabled = models.BooleanField(default=False)
+    bio = models.TextField(default="",null=True,blank=True)
 
 
     @property

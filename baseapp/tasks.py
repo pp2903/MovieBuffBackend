@@ -10,7 +10,8 @@ import requests
 from dotenv import dotenv_values
 
 
-config  = dotenv_values()
+config = dotenv_values()
+
 
 @shared_task
 def generate_and_send_pdf():

@@ -21,7 +21,4 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("userauth/", include('authentication.urls')),
     path("api/", include('baseapp.urls')),
-    # path('auth/',include('djoser.urls.jwt')),
-    # path('auth/',include('djoser.urls')),
-    # path('auth/',include('djoser.urls.authtoken')),
 ]
